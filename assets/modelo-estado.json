@@ -1,0 +1,44 @@
+{
+  "fase_atual": "00-inicializacao",
+  "status_fases": {},
+  "produto": null,
+  "preco": null,
+  "conta_anuncios_nome": null,
+  "pagina_facebook": null,
+  "instagram": null,
+  "tracking_escolhido": null,
+  "utmizey_dashboard": {
+    "nome": null,
+    "id": null
+  },
+  "orcamento_diario_brl": null,
+  "capi_token_ciente": null,
+  "contas_com_2fa": [],
+  "url_site": null,
+  "url_checkout": null,
+  "id_pixel_mascarado": null,
+  "repo": null,
+  "vercel_plano": null,
+  "criativos": [],
+  "bloqueios": [],
+  "ultima_validacao_em": null,
+  "tipo_entregavel": "",
+  "url_entregavel_drive": "",
+  "extras": {
+    "fazer": null,
+    "bumps": [],
+    "upsell": {
+      "nome": null,
+      "preco": null,
+      "url_pagina": null,
+      "checkout": null,
+      "upsell_por_url_ligado": false,
+      "vercel_projeto": null
+    }
+  },
+  "cronometro": false,
+  "email_suporte": null,
+  "conta_google_drive": null,
+  "conta_gmail": null,
+  "gmail_autorizado": null
+}

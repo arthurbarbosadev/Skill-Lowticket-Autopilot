@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- MODELO DE UPSELL (low-ticket-autopilot). Exemplo preenchido (produto fictício: calculadora de precificação).
+     Trocar: textos, preço, imagens em /assets, IDs do UTMizey (mesmo dashboard do produto principal) e UPSELL_CHECKOUT.
+     Imagens: mockup-guia.webp (GPT) e 4 prévias 800x600 (mockups GPT das páginas reais). Ver references/14-orderbumps.md -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferta para quem acabou de comprar — Encomendas o Ano Todo</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&display=swap" rel="stylesheet">
+<!-- UTMizey (mesmo dashboard do produto principal): UTMs + pixel -->
+<script src="https://utmizey.com.br/v3/utmizey.js" data-utmizey-id="SEU_ID_UTMIZEY" defer></script>
+<script src="https://utmizey.com.br/v3/pixel.js" data-utmizey-pixel="SEU_ID_PIXEL_UTMIZEY" defer></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#e86a9a;--wine:#7a3157;--pinkbg:#fde9f1;--lilac:#efe7fb;--ink:#3d2a3a;--muted:#6f5a6c;--green:#22c55e;--line:#f1dbe5}
+html{scroll-behavior:smooth}
+body{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+.container{max-width:480px;margin:0 auto;padding:0 22px 40px}
+.topbar{background:linear-gradient(135deg,var(--wine),#9b3f70);color:#fff;text-align:center;font-weight:700;font-size:14px;padding:10px 16px}
+.hero{text-align:center;padding:26px 0 6px}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);border-radius:999px;color:#16a34a;font-size:13px;font-weight:700;margin-bottom:14px}
+.badge svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+h1{font-size:clamp(25px,7.4vw,33px);font-weight:900;font-stretch:90%;line-height:1.1;letter-spacing:-.015em;color:var(--wine);margin-bottom:10px}
+h1 em{font-style:normal;color:var(--pink)}
+.sub{font-size:15.5px;color:var(--muted);line-height:1.5;max-width:360px;margin:0 auto}
+.sub strong{color:var(--ink)}
+.product{padding:18px 0 4px}
+.product img{width:100%;height:auto;display:block;border-radius:16px;border:2px solid var(--line);box-shadow:0 6px 24px rgba(122,49,87,.08)}
+.offer{border:2px solid var(--line);border-radius:20px;padding:26px 22px;text-align:center;margin:20px 0;box-shadow:0 6px 24px rgba(122,49,87,.07)}
+.tag{display:inline-block;padding:5px 14px;background:var(--pink);border-radius:8px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#fff;margin-bottom:14px}
+.offer h2{font-size:21px;font-weight:800;font-stretch:90%;color:var(--wine);margin-bottom:14px;line-height:1.2}
+.lbl{font-size:14px;color:var(--muted);margin-bottom:2px}
+.price{font-size:52px;font-weight:900;font-stretch:84%;color:var(--green);line-height:1}
+.price sup{font-size:24px;position:relative;top:-.15em}
+.psub{font-size:13px;color:#94a3b8;margin:4px 0 18px}
+.hr{height:1px;background:var(--line);margin:14px -6px}
+.items{text-align:left;margin-bottom:20px}
+.item{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:14.5px;line-height:1.35}
+.ic{width:20px;height:20px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.ic svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.cta{display:block;width:100%;padding:16px 20px;background:var(--green);color:#fff;font-size:16.5px;font-weight:800;font-stretch:86%;text-align:center;text-decoration:none;border-radius:14px;box-shadow:0 10px 30px -10px rgba(34,197,94,.55);animation:pulse 2.6s ease-in-out infinite}
+.cta small{display:block;font-size:11.5px;font-weight:500;font-stretch:100%;opacity:.9;margin-top:3px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+.decline{display:block;text-align:center;padding:12px;margin-top:8px;color:#a8a0a6;font-size:12.5px;text-decoration:underline}
+.guarantee{display:flex;gap:12px;align-items:center;background:#eaf7f0;border-radius:14px;padding:14px 16px;font-size:13.5px;line-height:1.45;margin:6px 0 10px}
+.guarantee .g{font-size:26px}
+.section-title{font-size:22px;font-weight:800;font-stretch:90%;text-align:center;color:var(--wine);margin:26px 0 6px}
+.section-title span{color:var(--pink)}
+.lead{text-align:center;font-size:14px;color:var(--muted);margin:0 auto 16px;max-width:360px;line-height:1.45}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;margin-bottom:10px;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;padding:8px 14px;font:inherit;font-size:13px;font-weight:700;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.tab.active{background:linear-gradient(135deg,var(--pink),var(--wine));color:#fff;border-color:transparent}
+.slider{position:relative;border:2px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 6px 24px rgba(122,49,87,.07)}
+.track{display:flex;transition:transform .4s cubic-bezier(.25,1,.5,1)}
+.slide{flex:0 0 100%}
+.slide img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#fff8fb}
+.slide .c{padding:14px 16px 16px;border-top:1px solid var(--line)}
+.slide .b{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:6px;background:var(--pinkbg);color:var(--pink);margin-bottom:6px}
+.slide h3{font-size:16px;font-weight:800;color:var(--wine);margin-bottom:4px}
+.slide p{font-size:13.5px;color:#4b5563;line-height:1.45}
+.nav{position:absolute;top:calc(37.5% - 18px);width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.92);box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer;font-size:18px;color:var(--wine)}
+.nav.prev{left:8px}.nav.next{right:8px}
+.dots{display:flex;justify-content:center;gap:6px;padding:0 0 12px}
+.dot{width:8px;height:8px;border-radius:50%;border:none;background:#e7d3dd;cursor:pointer}
+.dot.active{background:var(--pink);width:20px;border-radius:4px}
+.why{background:var(--pinkbg);border-radius:16px;padding:18px;margin:22px 0 18px;font-size:14.5px;line-height:1.5}
+.why b{color:var(--wine)}
+.faq{margin:10px 0 22px}
+.faq details{border-bottom:1px solid var(--line);padding:12px 2px}
+.faq summary{font-weight:700;color:var(--wine);cursor:pointer;font-size:14.5px}
+.faq p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.5}
+.footer{text-align:center;font-size:11.5px;color:#b3a6ae;margin-top:20px;line-height:1.6}
+.footer a{color:#b3a6ae}
+</style>
+</head>
+<body>
+<div class="topbar">Oferta para quem acabou de comprar a Produto Principal</div>
+<div class="container">
+
+<section class="hero">
+  <div class="badge"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Compra confirmada!</div>
+  <h1>Parabéns! 🎉<br>Agora vamos <em>encher a sua agenda</em></h1>
+  <p class="sub">Você já vai saber <strong>quanto cobrar</strong>. Este guia mostra <strong>quando e como divulgar</strong> para ter encomendas o ano inteiro, e não só no Natal.</p>
+</section>
+
+<div class="product"><img src="/assets/mockup-guia.webp" alt="Guia Encomendas o Ano Todo" width="900" height="900"></div>
+
+<section class="offer" id="oferta">
+  <span class="tag">SÓ NESTA PÁGINA</span>
+  <h2>Encomendas o Ano Todo<br>Guia de divulgação da confeiteira</h2>
+  <p class="lbl">Pagamento único de</p>
+  <div class="price">R<sup>$</sup>24<sup>,90</sup></div>
+  <p class="psub">Acesso imediato por e-mail · PDF de 16 páginas</p>
+  <div class="hr"></div>
+  <div class="items">
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Calendário de vendas</b> de nov/2026 a dez/2027: o que vender em cada data e quando começar a divulgar</span></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>60 legendas prontas</b> para Instagram e WhatsApp, separadas por tema</span></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Plano de divulgação de 30 dias</b>, semana a semana</span></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Roteiro de status</b> para os 7 dias da semana + 10 ideias rápidas</span></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Mensagens de recompra</b> para trazer de volta quem já comprou</span></div>
+    <div class="item"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Kits e combos</b> que aumentam o valor de cada pedido, com precificação pela Produto Principal</span></div>
+  </div>
+  <a class="cta js-up" href="#">SIM, QUERO ENCHER MINHA AGENDA<small>Pagamento único · acesso imediato</small></a>
+  <a class="decline js-no" href="/obrigado.html">Não, obrigada. Quero só a Produto Principal.</a>
+</section>
+
+<div class="guarantee"><div class="g">🛡️</div><div><b>7 dias de garantia.</b> Se não for para você, peça o reembolso pelo e-mail de suporte dentro de 7 dias, como prevê o Código de Defesa do Consumidor para compras online.</div></div>
+
+<section>
+  <h2 class="section-title">Veja por dentro <span>do guia</span></h2>
+  <p class="lead">Páginas reais do material que você recebe:</p>
+  <div class="tabs">
+    <button class="tab active" data-i="0">🗓️ Calendário</button>
+    <button class="tab" data-i="1">✍️ Legendas</button>
+    <button class="tab" data-i="2">📱 Status</button>
+    <button class="tab" data-i="3">💌 Recompra</button>
+  </div>
+  <div class="slider" id="slider">
+    <button class="nav prev" aria-label="Anterior">‹</button><button class="nav next" aria-label="Próximo">›</button>
+    <div class="track" id="track">
+      <div class="slide"><img src="/assets/prev-calendario.webp" alt="Calendário de vendas" loading="lazy"><div class="c"><span class="b">Parte 1 · Calendário</span><h3>O que vender em cada data</h3><p>Da Black Friday de 2026 ao Natal de 2027: produtos que vendem, data para abrir as encomendas e uma dica prática por mês.</p></div></div>
+      <div class="slide"><img src="/assets/prev-legendas.webp" alt="Legendas prontas" loading="lazy"><div class="c"><span class="b">Parte 2 · Legendas</span><h3>60 legendas para copiar e adaptar</h3><p>Encomendas abertas, cardápio, bastidores, datas comemorativas, kits e pós-venda. É só trocar o que está entre colchetes.</p></div></div>
+      <div class="slide"><img src="/assets/prev-status.webp" alt="Roteiro de status" loading="lazy"><div class="c"><span class="b">Parte 3 · Constância</span><h3>Roteiro de status da semana</h3><p>Um tema para cada dia e 10 ideias rápidas para nunca ficar sem saber o que postar no WhatsApp.</p></div></div>
+      <div class="slide"><img src="/assets/prev-recompra.webp" alt="Mensagens de recompra" loading="lazy"><div class="c"><span class="b">Parte 4 · Recompra</span><h3>Mensagens que trazem a cliente de volta</h3><p>Para a última data, aniversário chegando, cliente sumida, pós-entrega e lista de transmissão.</p></div></div>
+    </div>
+    <div class="dots"><button class="dot active" data-i="0" aria-label="1"></button><button class="dot" data-i="1" aria-label="2"></button><button class="dot" data-i="2" aria-label="3"></button><button class="dot" data-i="3" aria-label="4"></button></div>
+  </div>
+</section>
+
+<div class="why"><b>Por que agora?</b> A Produto Principal resolve o preço. Mas preço certo sem pedido não paga as contas. Com o calendário em mãos, você começa a divulgar a próxima data com semanas de antecedência, enquanto a maioria só lembra na véspera.</div>
+
+<a class="cta js-up" href="#">QUERO O GUIA POR R$ 24,90<small>Pagamento único · acesso imediato por e-mail</small></a>
+<a class="decline js-no" href="/obrigado.html">Não, obrigada.</a>
+
+<section class="faq">
+  <h2 class="section-title" style="font-size:19px">Dúvidas</h2>
+  <details><summary>Já paguei a Produto Principal. Ela está garantida?</summary><p>Sim. A sua compra já foi feita e o acesso da Produto Principal chega no seu e-mail de qualquer jeito. Este guia é opcional.</p></details>
+  <details><summary>Como recebo o guia?</summary><p>Por e-mail, logo depois do pagamento, no mesmo endereço que você usou na compra.</p></details>
+  <details><summary>Serve para quem está começando?</summary><p>Sim. O guia parte do básico: arrumar o perfil, tirar fotos com o celular e postar com constância.</p></details>
+  <details><summary>Promete um número de pedidos?</summary><p>Não. Ninguém honesto pode prometer isso. O guia dá o calendário, os textos e a rotina; o resultado depende do seu produto, da sua região e da sua constância.</p></details>
+</section>
+
+<p class="footer">Sua Marca · Suporte: <a href="mailto:suporte@seudominio.com">suporte@seudominio.com</a><br>Este site não é afiliado ao Facebook nem à Meta.</p>
+</div>
+
+<script>
+/* Link do checkout do upsell (Wiapy). Preencher com o link "Oferta Principal" do checkout do guia. */
+var UPSELL_CHECKOUT = "#";
+(function(){
+  try{
+    var qs = window.location.search || "";
+    document.querySelectorAll('.js-up').forEach(function(a){
+      if (UPSELL_CHECKOUT === "#") { a.href = "#oferta"; return; }
+      a.href = UPSELL_CHECKOUT + (qs ? (UPSELL_CHECKOUT.indexOf('?') > -1 ? '&' : '?') + qs.slice(1) : '');
+    });
+    document.querySelectorAll('.js-no').forEach(function(a){ a.href = '/obrigado.html' + qs; });
+  }catch(e){}
+})();
+(function(){
+  try{
+    var track=document.getElementById('track'),tabs=document.querySelectorAll('.tab'),dots=document.querySelectorAll('.dot'),n=4,cur=0,t=null;
+    function go(i){cur=(i+n)%n;track.style.transform='translateX(-'+(cur*100)+'%)';tabs.forEach(function(x,k){x.classList.toggle('active',k===cur)});dots.forEach(function(x,k){x.classList.toggle('active',k===cur)});}
+    function auto(){if(t)clearInterval(t);t=setInterval(function(){go(cur+1)},5000);}
+    document.querySelector('.prev').onclick=function(){go(cur-1);auto();};
+    document.querySelector('.next').onclick=function(){go(cur+1);auto();};
+    tabs.forEach(function(x){x.onclick=function(){go(+x.dataset.i);auto();};});
+    dots.forEach(function(x){x.onclick=function(){go(+x.dataset.i);auto();};});
+    var sx=0,s=document.getElementById('slider');
+    s.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+    s.addEventListener('touchend',function(e){var d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>40){go(cur+(d>0?1:-1));auto();}},{passive:true});
+    auto();
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
