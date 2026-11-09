@@ -29,7 +29,7 @@ Teste de links: {{PASS/FAIL}}
 Teste da entrega: {{PASS/PARCIAL/FAIL}}
 
 ## 5. Tracking
-Ferramenta: {{UTMIFY/UTMIZEY}}
+Ferramenta: UTMizey
 Pixel (ID não secreto opcional): {{ID}}
 Dashboard: {{NOME}}
 UTM script na página: {{PASS/FAIL}}

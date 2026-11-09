@@ -68,7 +68,6 @@ Registrar `checkout/configuracao.md` com nome, preço, URL do site, URL do check
 **Crítico:** um script no site **não basta** para atribuir uma venda paga se o checkout não informa pedidos ao tracking. Com o checkout criado, conectar a Wiapy à ferramenta escolhida na fase 07:
 
 - Para **UTMizey + Wiapy** com MCP conectado: `criar_webhook(dashboard_id, plataforma="Wiapy")` e colar a URL devolvida na Wiapy. Sem MCP: buscar `Integrações → Webhooks`, escolher Wiapy e gerar URL do webhook. Na Wiapy, cadastrar essa URL na área de Webhook, criar segredo/token compartilhado quando solicitado e ativar eventos apropriados (pago, pendente, reembolso, chargeback etc.). A integração oficial inclui instruções para o script UTMs e parâmetros do anúncio.
-- Para **UTMify + Wiapy**, verificar no painel e documentação atual se existe integração Wiapy nativa. Se não houver, avaliar webhook/API **suportados de fato** pela conta Wiapy e UTMify; não assumir compatibilidade nem inventar payload/campo. Se não conseguir, registrar `BLOCKER_TRACKING_VENDA`, sem afirmar rastreamento de compras completo.
 - Evitar eventos Purchase duplicados quando checkout, tracking e Meta CAPI enviarem o mesmo pedido. Escolher uma fonte principal de Purchase ou configurar deduplicação por `event_id` quando suportada.
 - Exigir consistência de moeda BRL, `value`, identificação do pedido, status e relação com anúncio.
 

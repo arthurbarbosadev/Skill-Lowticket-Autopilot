@@ -1,4 +1,4 @@
-# 07 — Meta Pixel + CAPI + UTMify ou UTMizey + script UTM no site
+# 07 — Meta Pixel + CAPI + UTMizey + script UTM no site
 
 ## Escopo desta fase
 
@@ -11,7 +11,7 @@ Não tentar testar o caminho página → checkout nesta fase: o CTA ainda é `CH
 
 ## Seleção
 
-Usar o tracking escolhido no pré-voo (**UTMify** ou **UTMizey**); só perguntar se ainda não tiver sido informado. Não confundir UTMizey (`utmizey.com.br`) com Utmify (`utmify.com.br`) ou a plataforma diferente chamada Utmize. Os caminhos exatos de menus podem mudar; identificar os rótulos **da sessão real** e seguir ajuda oficial quando necessário.
+A ferramenta de tracking é a **UTMizey** (`utmizey.com.br`). Os caminhos exatos de menus podem mudar; identificar os rótulos **da sessão real** e seguir ajuda oficial quando necessário.
 
 ## Passo A — Meta Business / Events Manager
 

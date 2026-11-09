@@ -28,7 +28,7 @@ Ao receber um pedido como "rode a low-ticket-autopilot", "lance um produto do ze
 | 04 | ChatGPT para mockups, capa e elementos | `references/04-chatgpt-assets.md` | Imagens utilizáveis consistentes com o produto |
 | 05 | Página de vendas inspirada na referência | `references/05-pagina-de-vendas.md` | Site funcional em ambiente local |
 | 06 | GitHub privado e Vercel inicial | `references/06-github-vercel.md` | URL pública `.vercel.app` obtida |
-| 07 | Base de tracking: Meta Pixel, CAPI, UTMify/UTMizey e script UTM | `references/07-tracking.md` | Pixel e integração salvos, script no site, template de parâmetros guardado |
+| 07 | Base de tracking: Meta Pixel, CAPI, UTMizey e script UTM | `references/07-tracking.md` | Pixel e integração salvos, script no site, template de parâmetros guardado |
 | 08 | Wiapy: produto, checkout, personalização e webhook de vendas | `references/08-wiapy.md` | Link da Oferta Principal verificado e webhook configurado |
 | 08b | **Order bumps (3) e upsell** (se o usuário quiser) | `references/14-orderbumps.md` | 3 bumps vinculados ao checkout principal; página do upsell no ar, checkout do upsell nos botões e "Upsell por URL" ligado no produto principal |
 | 09 | Atualização do site, testes de tracking e QA pré-lançamento | `references/09-publicacao-e-qa.md` | CTAs, UTMs, eventos, webhook e jornada ponta a ponta verificados |
@@ -93,7 +93,7 @@ Incidente real (lançamento anterior): o agente gerou/copiou o webhook Wiapy do 
 
 ## Estado, retomada e evidências
 
-Mantenha `estado.json` (modelo em `assets/modelo-estado.json`) com campos: `produto`, `preco`, `fase_atual`, `status_fases`, `conta_anuncios_nome`, `pagina_facebook`, `instagram`, `tracking_escolhido`, `orcamento_diario_brl`, `capi_token_ciente`, `contas_com_2fa`, `url_site`, `url_checkout`, `id_pixel_mascarado`, `repo`, `vercel_plano`, `criativos`, `bloqueios` e `ultima_validacao_em`. Não copie credenciais para o estado. Registre apenas evidências legítimas: caminho de arquivo, links, IDs não secretos, capturas sem dados sensíveis, horário de sucesso/erro.
+Mantenha `estado.json` (modelo em `assets/modelo-estado.json`) com campos: `produto`, `preco`, `fase_atual`, `status_fases`, `conta_anuncios_nome`, `pagina_facebook`, `instagram`, `orcamento_diario_brl`, `capi_token_ciente`, `contas_com_2fa`, `url_site`, `url_checkout`, `id_pixel_mascarado`, `repo`, `vercel_plano`, `criativos`, `bloqueios` e `ultima_validacao_em`. Não copie credenciais para o estado. Registre apenas evidências legítimas: caminho de arquivo, links, IDs não secretos, capturas sem dados sensíveis, horário de sucesso/erro.
 
 Se interrompido, leia o estado existente e retome **sem duplicar** pixel, dashboard, produto, checkout, repositório ou campanha.
 
