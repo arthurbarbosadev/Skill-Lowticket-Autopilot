@@ -66,3 +66,7 @@ references/00–15         passo a passo de cada fase
 assets/                  modelos (estado, relatório, candidatos, upsell, prompts do ChatGPT)
 scripts/validar_skill.py confere a estrutura do pacote
 ```
+
+## Licença
+
+MIT — veja `LICENSE`.
