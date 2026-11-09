@@ -10,7 +10,8 @@ Iniciar o projeto com autonomia, perguntar o mínimo, registrar limites, checar 
 - **Nome exato da conta de anúncios dentro da BM** a usar. Quando várias contas tiverem o mesmo nome, consultar seletor e buscar identificação adicional antes de ações com gasto.
 - **Página do Facebook** que vai veicular os anúncios. Perguntar também se há **Instagram** para vincular; é opcional, dá para anunciar só com a Página.
 - **Tracking: UTMizey.** Se o MCP da UTMizey estiver conectado, perguntar só: **ID do pixel da Meta** (ou autorização para criar um) e **quais contas de anúncio ligar** no dashboard. O resto (dashboard, webhook, códigos) o agente faz pelo MCP — ver `07-tracking.md`.
-- **Tipo de entregável na Wiapy:** perguntar "Como você quer entregar o produto: **link do Google Drive** (pasta pública, enviado por e-mail — recomendado quando há mais de um arquivo) ou **arquivo anexado** na Wiapy (E-book, um arquivo só)?". Registrar em `estado.json` → `tipo_entregavel`.
+- **Tipo de entregável na Wiapy:** perguntar "Como você quer entregar o produto: **arquivos anexados** na Wiapy (E-book, aceita PDF/XLSX/DOC, vários arquivos, sem ZIP) ou **link do Google Drive** (pasta pública enviada por e-mail; melhor para ZIP, vídeo ou muitos arquivos)?". Registrar em `estado.json` → `tipo_entregavel`.
+- **Data comemorativa:** se o produto for de uma data (Natal, Páscoa, Dia das Mães), perguntar até quando faz sentido vender e registrar em `data_limite_venda`.
 - **Order bumps e upsell:** "Quer que eu já crie os order bumps (3) e o upsell? Eu pesquiso as melhores opções, crio os produtos e entregáveis, cadastro os bumps na Wiapy e monto a página do upsell." Registrar em `estado.json` → `extras.fazer`.
 - **Cronômetro (opcional):** só perguntar se o usuário falar em urgência; por padrão não há cronômetro.
 - **Orçamento diário em reais:** "Quanto você vai gastar por dia?". Esse é o valor do conjunto de anúncios. Não perguntar orçamento total nem duração.

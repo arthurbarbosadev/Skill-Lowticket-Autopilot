@@ -100,6 +100,8 @@ Para cada bump e para o upsell: **Produtos → Conteúdos entregáveis → CRIAR
 3. No produto do upsell → menu **Links** → copiar a **Oferta Principal** e colocar em `UPSELL_CHECKOUT` na página do upsell. Publicar de novo.
 4. No **produto principal** → menu **Upsells** → ligar **"Página de obrigado ou upsell externo? Habilitar"** (é o "Upsell por URL") → **URL da página** = `https://<dominio>.vercel.app/` → SALVAR.
 5. Conferir que o produto principal continua ativo e com o checkout de sempre.
+6. **Tracking do upsell:** criar uma integração de webhook NOVA marcando só o produto do upsell, com a URL do webhook do dashboard do produto principal (ver "Lições de campo"). Sem isso as vendas do upsell não aparecem no dashboard.
+7. **Banner do checkout do upsell:** igual ao do principal (`references/08-wiapy.md`, "Banner no checkout").
 
 ## 7. QA dos extras
 
@@ -111,3 +113,13 @@ Para cada bump e para o upsell: **Produtos → Conteúdos entregáveis → CRIAR
 ## 8. Registro
 
 `estado.json` → `extras`: para cada bump/upsell, nome, preço, arquivo, ID/link do produto e checkout na Wiapy, status (criado / vinculado / testado). URL do site do upsell, projeto Vercel, e se o "Upsell por URL" está ligado.
+
+## Lições de campo (extras)
+- **E-book aceita mais de um arquivo:** em Arquivos → Novo Arquivo, dá para adicionar PDF + XLSX no mesmo conteúdo. Não precisa de Drive para upsell com planilha.
+- **Upload de arquivos pagos sem URL pública:** a conta do GitHub logada no navegador do usuário pode ser diferente da conta onde o agente criou os repositórios (e aí não enxerga os privados). Caminho que funciona: subir os arquivos numa **branch separada** (ex.: `entregas`) do repositório do site; a Vercel gera um **preview protegido** (Vercel Authentication, padrão para previews). O navegador do usuário está logado na Vercel, então o popup `https://<projeto>-git-entregas-<time>.vercel.app/obrigado.html` abre, faz `fetch('/entregas/<arquivo>')` e manda os `File` por `window.opener.postMessage`. Na Wiapy, setar `.files` direto no `input[type=file]` cujo `accept` combina (`jpg|png` para capa/thumb, `pdf|xlsx` para arquivos) e disparar `input` e `change`. Não clicar no label do upload: ele pode abrir o seletor nativo do sistema.
+- `.gitignore` com `*.xlsx` impede o commit da planilha: usar `git add -f`.
+- Push na `main` às vezes não dispara deploy na Vercel; conferir em `list_deployments` e, se preciso, fazer outro push.
+- **Upsell por URL:** Produto principal → **Upsells** → "Página de obrigado ou upsell externo?" → Habilitar → URL → Salvar.
+- **Integração do upsell no tracking:** Integrações → Criar integração → Webhook; nome "UTMizey - <produto> upsell"; marcar **só** o produto do upsell; colar a URL do webhook que o dashboard do produto principal já usa (abrir a integração existente só para ler a URL e fechar sem salvar); marcar os mesmos eventos da integração principal (pendente, aprovado, estornado, chargeback, cartão recusado).
+- Order bump não precisa de integração própria: ele entra no pedido do produto principal.
+

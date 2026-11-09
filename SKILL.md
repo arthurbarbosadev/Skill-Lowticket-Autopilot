@@ -35,6 +35,9 @@ Ao receber um pedido como "rode a low-ticket-autopilot", "lance um produto do ze
 | 10 | ChatGPT: 10 criativos e copies | `references/10-criativos.md` | 10 imagens finais e textos aprovados pelo QA interno |
 | 11 | Meta Ads ABO 1-1-5 | `references/11-meta-ads.md` | 1 campanha, 1 conjunto, 5 anúncios ativos, 5 reservas |
 | 12 | Relatório e passagem de operação | `references/12-relatorio.md` | Estado e evidências documentados |
+| 13 | Otimização e escala (dias seguintes, quando o usuário pedir) | `references/15-otimizacao-e-escala.md` | Decisão do dia registrada com números do tracking |
+
+A fase 13 roda depois do lançamento, a cada análise diária que o usuário pedir ("olha as campanhas", "escala isso").
 
 Consulte também `references/13-excecoes-e-seguranca.md` e os templates de `assets/` (incluindo `assets/modelo-upsell.html`) quando pertinentes. A fase 08b também pode ser pedida depois, para um produto que já está rodando: ler o `estado.json` do lançamento e seguir `references/14-orderbumps.md`.
 
@@ -75,10 +78,10 @@ Incidente real (lançamento anterior): o agente gerou/copiou o webhook Wiapy do 
 
 - **Navegador:** os logins do usuário costumam estar no Chrome (Claude in Chrome), não no navegador interno do app. Perguntar onde ele está logado antes de pedir login.
 - **ID do pixel:** usar a **"Identificação do conjunto de dados"** em Gerenciador de Eventos → Configurações. O número em `selected_asset_id` na URL do Business Suite NÃO é o ID do pixel.
-- **Tokens (CAPI etc.):** a extensão não permite colar tokens; o usuário cola, o agente prepara o formulário.
+- **Tokens (CAPI etc.):** com a ciência do usuário (pré-voo), o agente gera o token e cola só no campo seguro da plataforma de tracking (pelo MCP, quando houver). Se a extensão do navegador bloquear colar, o agente deixa o formulário pronto e pede para o usuário colar.
 - **Quando a extensão limitar, tentar controlar o computador (computer use)** antes de pedir ajuda: carregar a skill de computer use, `computer_resolve_access` + `computer_request_access` e usar o app necessário. Limite conhecido no Windows: navegadores ficam em modo **leitura** e o Explorador de Arquivos em modo **só clique** (sem digitar nem arrastar), então o seletor de arquivos do Chrome não pode ser operado assim. Nesse caso, deixar o formulário pronto e pedir ao usuário só o anexo.
-- **Uploads de arquivo:** imagens públicas (capa, banner) podem ser injetadas no `<input type=file>` buscando-as do próprio site (`/assets/brand/`, com CORS liberado no `vercel.json`). Arquivos pagos nunca vão para URL pública: o usuário anexa (o controle do computador fica em modo leitura em navegadores).
-- **Wiapy:** o checkout só salva depois que o conteúdo entregável está completo. O tipo do conteúdo (E-book, Link enviado por E-mail etc.) NÃO pode ser trocado depois de criado, e o tipo E-book aceita só UM arquivo (PDF/XLS/XLSX/DOC, sem ZIP). **Perguntar ao usuário o tipo de entregável** no pré-voo. Padrão quando há mais de um arquivo: **Google Drive + conteúdo "Link enviado por E-mail"** (detalhes em `references/08-wiapy.md`).
+- **Uploads de arquivo:** imagens públicas (capa, banner) podem ser injetadas no `<input type=file>` buscando-as do próprio site (`/assets/brand/`, com CORS liberado no `vercel.json`). Arquivos pagos nunca vão para URL pública: subir numa branch separada do repositório do site para a Vercel gerar um **preview protegido** (Vercel Authentication), abrir esse preview em popup no navegador logado e mandar os arquivos por postMessage (passo a passo em `references/14-orderbumps.md`, "Lições de campo"). Se não der, o usuário anexa.
+- **Wiapy:** o checkout só salva depois que o conteúdo entregável está completo. O tipo do conteúdo (E-book, Link enviado por E-mail etc.) NÃO pode ser trocado depois de criado, e o tipo E-book aceita vários arquivos (PDF/XLS/XLSX/DOC, sem ZIP), adicionados um a um em Arquivos → Novo Arquivo. **Perguntar ao usuário o tipo de entregável** no pré-voo. Padrão: **E-book** com os arquivos anexados; **Google Drive + conteúdo "Link enviado por E-mail"** quando houver ZIP, vídeo grande ou muitos arquivos (detalhes em `references/08-wiapy.md`).
 - **Google Drive do entregável:** criar uma pasta com o nome do produto no Drive da operação, subir os arquivos e deixar a pasta **pública: "Qualquer pessoa com o link – Leitor"**. Conferir em aba anônima que a pasta abre sem login. Upload sem acesso ao seletor de arquivos: subir os arquivos para um repositório GitHub **privado** (ex. `lt-entregaveis/<produto>/`), no Drive injetar um botão que faz `window.open` do repositório (clique real), na aba do GitHub buscar `/<owner>/<repo>/raw/main/<produto>/<arquivo>`, montar `File` e mandar via `window.opener.postMessage`; no Drive interceptar `HTMLInputElement.prototype.click` para preencher `.files` com DataTransfer e usar Novo → Upload de arquivo.
 - **UTMizey — MCP:** quando o MCP da UTMizey estiver conectado, configurar tudo por ele (dashboard, contas, pixel, webhook, códigos e leitura de resultados) seguindo `references/07-tracking.md` → Passo B0, sempre passando o `dashboard_id` do lançamento. O usuário só precisa conectar o Facebook (link do MCP) e colar o webhook na Wiapy se o agente não conseguir.
 - **Google Drive/Gmail:** usar só a conta Google informada no pré-voo; conferir a conta ativa antes de criar pastas ou ler e-mails.
@@ -90,6 +93,17 @@ Incidente real (lançamento anterior): o agente gerou/copiou o webhook Wiapy do 
 - **Order bumps e upsell (fase 08b):** perguntar no pré-voo se o usuário quer. Padrão: 3 bumps baratos (R$ 7,90–9,90) e 1 upsell (R$ 24,90–27). Cada extra é um produto normal na Wiapy (conteúdo + checkout). Bumps: menu **Order Bumps** → criar e vincular ao checkout principal, caixinha desmarcada. Upsell: site novo na pasta raiz (modelo `assets/modelo-upsell.html`), botões apontando para o link Oferta Principal do checkout do upsell; no produto principal → aba **Upsell** → colar a URL da página e **ligar "Upsell por URL"**. Detalhes em `references/14-orderbumps.md`.
 - **Repositório novo bloqueado:** se a criação de um repositório GitHub novo for negada, colocar o site novo numa pasta (ex.: `upsell/`) do repositório privado do lançamento e criar o projeto Vercel com Root Directory nessa pasta.
 - Teste de PageView no navegador do usuário pode dar falso negativo por bloqueador de anúncios (fbevents.js 503). Validar em aba anônima sem extensões ou no 'Testar eventos' da Meta.
+
+- **Banner do checkout:** todo checkout (principal e upsell) leva banner 3:1 gerado no GPT no cabeçalho do editor visual da Wiapy (`references/08-wiapy.md`, "Banner no checkout").
+- **Produto de data comemorativa (Natal, Páscoa, Dia das Mães):** registrar no `estado.json` a data limite de venda (quando o comprador ainda consegue usar o produto) e avisar o usuário quando faltar uma semana; perto do fim, não subir orçamento.
+- **Upsell no tracking:** o upsell é outro produto na Wiapy, então precisa da sua própria integração de webhook marcando só ele, com a URL do webhook do dashboard do produto principal. Sem isso, as vendas do upsell não aparecem no dashboard.
+
+## Ferramentas e adaptação
+
+A skill foi escrita e testada com **Wiapy** (checkout), **UTMizey** (tracking), **Vercel + GitHub** (site), **ChatGPT** (imagens) e **Meta Ads**. Com outras ferramentas, a lógica das fases continua igual; o que muda são os passos das referências 07, 08 e 14:
+- **Outro checkout (Kiwify, Hotmart, Cakto etc.):** procurar no painel os equivalentes de produto, conteúdo entregável, order bump, upsell por URL e webhook. Ler a ajuda oficial da plataforma antes de configurar; não adivinhar campos.
+- **Outro tracking (Utmify etc.):** manter a REGRA CRÍTICA (um dashboard por produto, nunca regenerar webhook de dashboard que já tem um) e conferir vendas no painel do tracking, não no Gerenciador de Anúncios.
+- Se uma etapa depender de ferramenta que o usuário não tem, avisar no pré-voo qual etapa fica de fora.
 
 ## Estado, retomada e evidências
 

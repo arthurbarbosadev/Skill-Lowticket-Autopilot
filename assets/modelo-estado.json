@@ -32,12 +32,20 @@
       "url_pagina": null,
       "checkout": null,
       "upsell_por_url_ligado": false,
-      "vercel_projeto": null
+      "vercel_projeto": null,
+      "integracao_tracking": null
     }
   },
   "cronometro": false,
   "email_suporte": null,
   "conta_google_drive": null,
   "conta_gmail": null,
-  "gmail_autorizado": null
+  "gmail_autorizado": null,
+  "data_limite_venda": null,
+  "regras_escala": {
+    "subir_pct": 20,
+    "roas_subir": 1.5,
+    "roas_pausar": 1.0
+  },
+  "diario": []
 }
